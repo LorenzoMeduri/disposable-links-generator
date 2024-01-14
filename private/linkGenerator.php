@@ -20,7 +20,7 @@
         $sql = "INSERT INTO links (hash, expiration, remaining_uses, file_path) VALUES ('".$hash."', '".$expirationDate."' , ".$remaining_uses.", '".$path."')";
         $rec = mysqli_query($conn,$sql);
         
-        return $ini['base_url']."?hash=".$hash;
+        return $ini['base_url']."/?hash=".$hash;
     }
 
     $file = $_GET['file'];
