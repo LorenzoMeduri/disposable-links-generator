@@ -10,7 +10,7 @@
         $ini = parse_ini_file($config_path);
         require_once(__DIR__.'/../config/conn.php');
         
-        $path = __DIR__."/../files/".$file;
+        $path = __DIR__."/".$file;
 
         date_default_timezone_set('Europe/Rome');
         $expirationDate = date('Y-m-d H:i:s', strtotime("+ $hours_to_expiration hours"));
@@ -27,4 +27,3 @@
     header('location:index.php');
 ?>
 </html>
-
