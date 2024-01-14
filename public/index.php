@@ -3,7 +3,7 @@
     /*ini_set('display_errors', 1);
     error_reporting(E_ALL);*/
 
-    require_once(__DIR__.'/../config/conn.php');
+    require_once($dir_path.'/config/conn.php');
     $hash = $_GET['hash'];
 
     $sql = "SELECT * FROM links WHERE hash = '$hash' AND expiration >= NOW() AND remaining_uses > 0";

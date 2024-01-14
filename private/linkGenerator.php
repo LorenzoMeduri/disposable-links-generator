@@ -6,11 +6,13 @@
     function createLink($file, $hours_to_expiration, $remaining_uses){
         $hash = sha1($file.uniqid().time());
         
-        $config_path = __DIR__.'/../config/config.ini';
+        $dir_path = dirname(__DIR__);
+
+        $config_path = $dir_path.'/config/config.ini';
         $ini = parse_ini_file($config_path);
-        require_once(__DIR__.'/../config/conn.php');
+        require_once($dir_path.'/config/conn.php');
         
-        $path = __DIR__."/".$file;
+        $path = $dir_path.'/files/';
 
         date_default_timezone_set('Europe/Rome');
         $expirationDate = date('Y-m-d H:i:s', strtotime("+ $hours_to_expiration hours"));

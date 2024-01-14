@@ -13,10 +13,11 @@
         ini_set('display_errors', 1);
         error_reporting(E_ALL);
 
-        $config_path = __DIR__.'/../config/config.ini';
+        $dir_path = dirname(__DIR__);
+        $config_path = $dir_path.'/config/config.ini';
         $ini = parse_ini_file($config_path);
 
-        $path = __DIR__.'/../files/'; //default path
+        $path = $dir_path.'/files/';
         $files = scandir($path);    //directory scan
         
         /* file upload */
@@ -34,7 +35,7 @@
             }
         }
 
-        require_once(__DIR__.'/../config/conn.php');
+        require_once($dir_path.'/config/conn.php');
 
         echo '<table>';
             echo '<tr><th></th><th>Name</th><th>Size</th><th>Link</th><th>Expiration</th><th>Uses</th><th>Path</th> </tr>';
