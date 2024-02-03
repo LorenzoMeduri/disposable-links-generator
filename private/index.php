@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Files</title>
+    <script>
+        var flag = false;
+        function copyToClipboard() {
+            var textToCopy = document.getElementById('copy');
+            var tempInput = document.createElement('input');
+            tempInput.value = textToCopy.innerText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            if(!flag){
+                var copiedText = '  Copied! ✓';
+                textToCopy.innerHTML += '<span class="copied">' + copiedText + '</span>';
+                flag = true;
+            }
+        }
+    </script>
 </head>
 <body>
     <?php
@@ -96,7 +114,7 @@
                             echo '<tr>';
                         }
 
-                        echo '<td>'.$ini['base_url'].'?hash='.$array['hash'].'</td><td>'.$array['expiration'].'</td><td>'.$array['remaining_uses'].'</td><td>'.$array['file_path'].'</td>
+                        echo '<td id="copy">'.$ini['base_url'].'?hash='.$array['hash'].'</td><td>'.$array['expiration'].'</td><td>'.$array['remaining_uses'].'</td><td>'.$array['file_path'].'</td>
                         <td><button type="submit" name="'.$array['hash'].'">DELETE</button></td></tr>';
                     }
 
@@ -112,5 +130,7 @@
     </form>
 
 </body>
+<script>
+    document.getElementById('copy').addEventListener('click', copyToClipboard);
+</script>    
 </html>
-
